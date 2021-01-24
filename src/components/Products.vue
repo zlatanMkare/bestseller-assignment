@@ -17,6 +17,7 @@
                               tag="article"
                               class="mb-2"
                          >
+                              <!-- Check if we have an image -->
                               <template v-if="typeof productImages[index] == 'object'">
                                    <b-img fluid :src="productImages[index][Object.keys(productImages[index])[0]]"></b-img>
                               </template>
@@ -51,18 +52,19 @@
           },
 
           computed: {
+               // filter products
                filteredProducts() {
                     return this.products.products.filter(product => {
                          return product.name.en.toLowerCase().includes(this.search.toLowerCase())
                     })
                },
+
+               // get all product images
                productImages() {
                     let image = [];
-
                     this.filteredProducts.forEach(element => {
                          image.push(element.images)
                     });
-
                     return image;
                }
           }

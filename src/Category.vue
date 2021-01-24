@@ -59,6 +59,7 @@
                     return this.$route.params.id
                },
 
+               // get products for the specific category
                categoryProducts() {
                     let products = []
                     this.products.forEach(product => {
